@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
-
 class EmailAdress {
   final String value;
+  final Exception failure;
 
   factory EmailAdress(String input) {
     // ignore: unnecessary_null_comparison
@@ -11,12 +10,11 @@ class EmailAdress {
     );
   }
 
-  const EmailAdress._(this.value);
+  const EmailAdress._(this.value, this.failure);
 
   @override
   bool operator ==(covariant EmailAdress other) {
     if (identical(this, other)) return true;
-
     return other.value == value;
   }
 
@@ -37,8 +35,8 @@ String validateEmailAdress(String input) {
   }
 }
 
-class InvalidEmailException implements Exception {
+class InvalidEmailFailure{
   final String errorValue;
 
-  InvalidEmailException({required this.errorValue});
+  InvalidEmailFailure({required this.errorValue});
 }
